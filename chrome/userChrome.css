@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+/* Custom CSS for the browser interface */
+
+/* Adjustments for the browser window */
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+    /* Avatar image customization */
+    #fxa-avatar-image {
+        /* Makes your avatar picture larger */
+        width: 25px !important;
+        height: 25px !important;
+    }
+    /* Toolbar and tabs separation */
+    :root:not([privatebrowsingmode="temporary"], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs,
+    :root[privatebrowsingmode="temporary"]:not([firefoxviewhidden]) :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) + #tabbrowser-tabs {
+        /* Removes the separator line between toolbar items and tabs */
+        border-inline-start: 0px solid color-mix(in srgb, currentColor 25%, transparent) !important;
+    }
+    /* URL bar customization */
+    #urlbar-background, #urlbar {
+        /* Makes URL bar rounded */
+        border-radius: 20px !important;
+    }
+    /* Tab icon overlay */
+    .tab-icon-overlay {
+        /* Removes audio playing indicator in tab icon */
+        stroke: unset !important;
+        fill: unset !important;
+        background: unset !important;
+        fill-opacity: 0 !important;
+    }
+    /* General tab and toolbar button rounding */
+    :root {
+        --tab-border-radius: 20px !important; /* Makes tabs rounded */
+        --toolbarbutton-border-radius: 15px !important; /* Makes Floorp icon in toolbar rounded */
+    }
+    /* Separates tabs with a small margin */
+    .tab-background {
+        margin-left: 1px !important;
+        margin-right: 1px !important;
+    }
+}
+
+/* Browser Border Styling */
+@media (prefers-color-scheme: dark) {
+    #appcontent browser {
+        border-radius: 15px !important;
+        margin: 15px !important;
+        border: 3px solid rgba(0, 0, 0, 0);
+        transition: border 0.3s ease;
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    }
+
+        #appcontent browser:hover {
+            border: 3px solid rgba(204, 204, 204, 0.1);
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+        }
+}
+
+@media (prefers-color-scheme: light) {
+    #appcontent browser {
+        border-radius: 15px !important;
+        margin: 15px !important;
+        border: 3px solid rgba(51, 51, 51, 0.1);
+        transition: border 0.3s ease;
+        box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+    }
+
+        #appcontent browser:hover {
+            border: 3px solid rgba(51, 51, 51, 0.6);
+            box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+        }
+}
+
+/* Search Bar Customizations */
+#urlbar .search-one-offs:not([hidden]) {
+    /* Removes search engines from the search/url bar */
+    display: none !important;
+}
+
+#nav-bar #urlbar {
+    /* Removes border and shadow from URL bar */
+    border-bottom: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    min-height: 30px !important;
+    background-color: transparent !important; /* No background color for URL bar */
+}
+
+    #nav-bar #urlbar[breakout][breakout-extend][open] {
+        /* Custom styles for extended URL bar */
+        border-bottom: none !important;
+        border-top: none !important;
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px !important;
+        background-color: var(--firefoxcss-url-breakout-bar-bg-color) !important;
+    }
+
+#nav-bar #search-container #searchbar {
+    /* Removes border and shadow from search bar */
+    border-bottom: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+}

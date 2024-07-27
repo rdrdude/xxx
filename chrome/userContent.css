@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* Please write your custom CSS under this line */
+
+@-moz-document url-prefix("about:newtab"), url-prefix("about:home"), url-prefix("about:blank") {
+    /* This modifies the new tab page for a cleaner look */
+
+    .releasenote {
+        /* Makes Support and Release Note invisible */
+        color: #ffffff00 !important;
+    }
+
+    body {
+        /* Sets a custom wallpaper for the background */
+        background: url(wallpaper.jpg) no-repeat center center fixed !important;
+        background-size: cover !important; /* Ensures the image covers the entire background */
+        background-attachment: fixed !important; /* Keeps the background fixed in place */
+    }
+
+    .personalize-button {
+        /* Makes Settings Button in New Tab rounded */
+        border: 0;
+        border-radius: 20px !important;
+        background-color: transparent;
+        padding: 15px;
+        background-color: color-mix(in srgb, var(--newtab-background-color) 50%, transparent);
+        border: 1px solid rgba(0, 0, 0, 0) !important;
+    }
+}
